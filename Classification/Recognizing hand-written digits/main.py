@@ -22,7 +22,7 @@ clf.fit(X_train, y_train)
 # Test the model
 predicted = clf.predict(X_test)
 
-
+#Confusion matrix
 disp = metrics.plot_confusion_matrix(clf, X_test, y_test)
 disp.figure_.suptitle("Confusion Matrix")
 print(f"Confusion matrix:\n{disp.confusion_matrix}")
