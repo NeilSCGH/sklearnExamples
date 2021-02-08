@@ -1,3 +1,5 @@
+#https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py
+
 import matplotlib.pyplot as plt
 
 from sklearn import datasets, svm, metrics
@@ -20,10 +22,9 @@ clf.fit(X_train, y_train)
 # Test the model
 predicted = clf.predict(X_test)
 
-_, axes = plt.subplots(nrows=1, ncols=8, figsize=(5, 3))
-for ax, image, prediction in zip(axes, X_test, predicted):
-    ax.set_axis_off()
-    image = image.reshape(8, 8)
-    ax.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
-    ax.set_title(f'Prediction: {prediction}')
+
+disp = metrics.plot_confusion_matrix(clf, X_test, y_test)
+disp.figure_.suptitle("Confusion Matrix")
+print(f"Confusion matrix:\n{disp.confusion_matrix}")
+
 plt.show()
